@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 7;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f5f9;
+}
+
+.card {
+  width: 320px;
+  height: 300px;
+}
+
+#flip {
+  display: none;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+.toggle {
+  display: none;
+}
+
+.front,
+.back {
+  display: none;
+}
+
+#login:checked ~ .card .front {
+  display: block;
+}
+
+.registerHeading,
+.loginHeading {
+  padding: 10px 20px;
+}
+
+#login:checked ~ .card .heading .loginHeading {
+  background-color: black;
+  color: white;
+}
+
+#register:checked ~ .card .heading .registerHeading {
+  background-color: black;
+  color: white;
+}
+
+#register:checked ~ .card .back {
+  display: block;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+a {
+  color: none;
+}
+
+.createAcc {
+  color: blue;
+  font-size: small;
+  cursor: pointer;
+}

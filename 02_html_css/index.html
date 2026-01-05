@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <h1>LOGO</h1>
+      </div>
+
+      <div class="right">
+        <input type="radio" name="auth" id="login" checked class="toggle" />
+        <input type="radio" name="auth" id="register" class="toggle" />
+
+        <div class="card">
+          <div class="heading">
+            <label for="login" class="loginHeading">Login</label>
+            <label for="register" class="registerHeading">Register</label>
+          </div>
+
+          <div class="front">
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <a href="#login">
+              <button>Login</button>
+            </a>
+            <a href="#forgotPassword">
+              <button>Forgot Password</button>
+            </a>
+            <br />
+            <label for="register" class="createAcc">Create new Account</label>
+          </div>
+
+          <div class="back">
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <a href="#register">
+              <button>Register</button>
+            </a>
+            <br />
+            <label for="login" class="createAcc"
+              >Already have an Account?</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
