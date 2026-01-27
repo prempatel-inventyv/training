@@ -7,3 +7,5 @@
 ### 04_js : Javascript Task given by sir
 
 ### 05_exercism : Task of the exercism
+
+### 06_rust : Task of the Rust
