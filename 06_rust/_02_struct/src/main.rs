@@ -1,94 +1,129 @@
-struct User{
-	username:String,
-	password:String,
-	fullname:String,
-	email:String
+#[derive(Clone)]
+struct Address {
+    street: String,
+    city: String,
+    state: String,
+    country: String,
+}
+
+struct User {
+    username: String,
+    password: String,
+    fullname: String,
+    email: String,
+    address: Address,
 }
 
 impl User {
+    fn set_username(&mut self, username: String) {
+        self.username = username;
+    }
 
-	fn set_email(&mut self,email:String){
-		self.email = email
-	}
+    fn set_password(&mut self, password: String) {
+        self.password = password;
+    }
 
-	fn set_password(&mut self,password:String){
-		self.password = password
-	}
+    fn set_fullname(&mut self, fullname: String) {
+        self.fullname = fullname;
+    }
 
-	fn set_fullname(&mut self,fullname:String){
-		self.fullname = fullname
-	}
+    fn set_email(&mut self, email: String) {
+        self.email = email;
+    }
 
-	fn get_username(&self) -> String{
-		self.username.clone()
-	}
+    fn set_address(&mut self, address: Address) {
+        self.address = address;
+    }
 
-	fn set_username(&mut self,username:String){
-		self.username = username
-	}
+    fn get_username(&self) -> &str {
+        &self.username
+    }
 
-	fn get_email(&self) -> String{
-		self.email.clone()
-	}
-	
-	fn get_password(&self) -> String {
-		self.password.clone()
-	}
-	
-	fn get_fullname(&self) -> String{
-		self.fullname.clone()
-	}
+    fn get_password(&self) -> &str {
+        &self.password
+    }
 
-	fn check_credential(&self,email:String,password:String) -> bool{
-		if self.password == password && self.email == email {
-			return true;
-		}
-		false
-	}
+    fn get_fullname(&self) -> &str {
+        &self.fullname
+    }
 
-	fn login_user(&self,email:String,password:String) -> String{
-		let is_credantial_valid :bool = self.check_credential(email, password);
-		if is_credantial_valid == true {
-			format!("User login successful")
-		}
-		else{
-			format!("Invalid Credantial")
-		}
-	}
+    fn get_email(&self) -> &str {
+        &self.email
+    }
 
-	fn user_details(&self) -> String {
-		format!(
-			"Username : {}\nPassword : {}\nEmail : {}\nFullname : {}",
-			self.username,
-			self.password,
-			self.email,
-			self.fullname
-		)
-	}	
+    fn get_address(&self) -> Address {
+        self.address.clone()
+    }
 
-	fn user_details_with_args(&self,username:String,password:String,email:String,fullname:String) -> String{
-		format!("Username : {}\nPassword : {}\nEmail {}\nFullname: {}",username,password,email,fullname)
-	}
+    fn check_credential(&self, email: &str, password: &str) -> bool {
+        self.email == email && self.password == password
+    }
+
+    fn login_user(&self, email: &str, password: &str) -> String {
+        if self.check_credential(email, password) {
+            "User login successful".to_string()
+        } else {
+            "Invalid Credential".to_string()
+        }
+    }
+
+    fn user_details(&self) -> String {
+        format!(
+            "Username : {}\nPassword : {}\nEmail : {}\nFullname : {}\nStreet : {}\nCity : {}\nState : {}\nCountry : {}",
+            self.username,
+            self.password,
+            self.email,
+            self.fullname,
+            self.address.street,
+            self.address.city,
+            self.address.state,
+            self.address.country,
+        )
+    }
 }
 
-fn main(){
-	let mut user1:User = User{
-		username:String::from("poojan_0671"),
-		password:String::from("123456"),
-		fullname:String::from("Prem Patel"),
-		email:String::from("poojan@gmail.com")
-	};
+fn main() {
 
-	user1.set_fullname("Prem B. Patel".to_string());
-	user1.set_email("prem@gmail.com".to_string());
-	user1.set_username("prem_0671".to_string());
-	user1.set_password("123456".to_string());
-	println!("{}",user1.get_fullname());
-	println!("{}",user1.get_email());
-	println!("{}",user1.get_password());
-	println!("{}",user1.get_username());
+    let mut user1 = User {
+        username: "poojan_0671".to_string(),
+        password: "123456".to_string(),
+        fullname: "Prem Patel".to_string(),
+        email: "poojan@gmail.com".to_string(),
 
-	println!("User Data : {}", user1.user_details());
-	// println!("User Data : {}", user1.user_details_with_args());
-	println!("{}",user1.login_user("prem@gmail.com".to_string(),"123456".to_string()));
+        address: Address {
+            street: "Main Road".to_string(),
+            city: "Mehsana".to_string(),
+            state: "Gujarat".to_string(),
+            country: "India".to_string(),
+        },
+    };
+
+    user1.set_username("prem_0671".to_string());
+    user1.set_password("123456".to_string());
+    user1.set_fullname("Prem B. Patel".to_string());
+    user1.set_email("prem@gmail.com".to_string());
+
+    let new_address = Address {
+        street: "Ring Road".to_string(),
+        city: "Kadi".to_string(),
+        state: "Gujarat".to_string(),
+        country: "India".to_string(),
+    };
+
+    user1.set_address(new_address);
+
+    println!("{}", user1.get_username());
+    println!("{}", user1.get_password());
+    println!("{}", user1.get_fullname());
+    println!("{}", user1.get_email());
+
+    let addr = user1.get_address();
+    println!("City from getter: {}", addr.city);
+
+    println!("\nUser Data:\n{}", user1.user_details());
+
+    println!(
+        "\n{}",
+        user1.login_user("prem@gmail.com", "123456")
+    );
 }
