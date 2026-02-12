@@ -9,3 +9,12 @@
 ### 05_exercism : Task of the exercism
 
 ### 06_rust : Task of the Rust
+
+- Loop Task
+- Structure Taskß
+- Serdejson Task
+- Mutex and RwLock Task
+- Packages and Crates Task
+- Ownership Task
+- Inventory Task
+- Thread Task
